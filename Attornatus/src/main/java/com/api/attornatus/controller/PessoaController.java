@@ -4,9 +4,7 @@ package com.api.attornatus.controller;
 import com.api.attornatus.modelo.Pessoa;
 import com.api.attornatus.service.PessoaService;
 import lombok.AllArgsConstructor;
-import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -36,8 +34,8 @@ public class PessoaController {
     }
 
     @PutMapping("alterar/")
-    public void alterar(@RequestBody Pessoa pessoa, @RequestParam Long idCliente, @RequestParam Long idEndereco) {
-        pessoaService.alterar(pessoa, idCliente, idEndereco);
+    public void alterar(@RequestBody Pessoa pessoa, @RequestParam Long idPessoa, @RequestParam Long idEndereco) {
+        pessoaService.alterar(pessoa, idPessoa, idEndereco);
     }
 
 }
