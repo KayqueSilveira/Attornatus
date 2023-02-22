@@ -1,12 +1,18 @@
 package com.api.attornatus.modelo;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
 @Entity
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Endereco implements Serializable {
 
     private static final long serialVersionUID = 3314373291549278677L;
