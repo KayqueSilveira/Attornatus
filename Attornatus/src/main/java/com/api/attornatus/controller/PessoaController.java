@@ -4,6 +4,10 @@ package com.api.attornatus.controller;
 import com.api.attornatus.modelo.Pessoa;
 import com.api.attornatus.service.PessoaService;
 import lombok.AllArgsConstructor;
+import org.apache.coyote.Response;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,18 +20,19 @@ public class PessoaController {
     private final PessoaService pessoaService;
 
     @PostMapping("/cadastrar")
-    public void cadastrar(@RequestBody Pessoa pessoa) {
+    public ResponseEntity<Pessoa> cadastrar(@RequestBody Pessoa pessoa) {
         pessoaService.save(pessoa);
+        return new ResponseEntity<>(pessoa, HttpStatus.CREATED);
     }
 
     @GetMapping("buscar/{id}")
-    public Pessoa buscarPessoa(@PathVariable Long id){
-        return pessoaService.buscarPorIdPessoa(id);
+    public ResponseEntity<Pessoa> buscarPessoa(@PathVariable Long id){
+        return new ResponseEntity<>(pessoaService.buscarPorIdPessoa(id), HttpStatus.ACCEPTED);
     }
 
     @GetMapping("buscar")
-    public List<Pessoa> buscarTodos() {
-        return pessoaService.buscarTodos();
+    public ResponseEntity<List<Pessoa>> buscarTodos() {
+        return new ResponseEntity<>(pessoaService.buscarTodos(), HttpStatus.ACCEPTED);
     }
 
     @PutMapping("alterar/")

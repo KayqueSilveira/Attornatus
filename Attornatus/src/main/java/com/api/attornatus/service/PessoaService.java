@@ -16,11 +16,11 @@ public class PessoaService {
     @Autowired
     private EnderecoRepositoy enderecoRepositoy;
 
-    public void save(final Pessoa pessoa) {
+    public Pessoa save(final Pessoa pessoa) {
         if(pessoaRepository.existsByNome(pessoa.getNome())){
             throw new RuntimeException("Pessoa ja possui cadastro");
         }
-        pessoaRepository.save(pessoa);
+        return pessoaRepository.save(pessoa);
     }
 
     public Pessoa buscarPorIdPessoa(final Long id) {
